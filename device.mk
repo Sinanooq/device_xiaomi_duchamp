@@ -186,7 +186,6 @@ PRODUCT_PACKAGES += \
    SettingsResOverlayDuchamp \
    SystemUIOverlayDuchamp \
    TelephonyResOverlayDuchamp \
-   TetheringResOverlayDuchamp \
    WifiOverlay
 
 PRODUCT_PACKAGES += \
@@ -367,6 +366,9 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     wpa_supplicant
+
+PRODUCT_PACKAGES += \
+    NcmTetheringOverlay
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/duchamp/duchamp-vendor.mk)
