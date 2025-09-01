@@ -186,6 +186,7 @@ PRODUCT_PACKAGES += \
    CarrierConfigOverlayDuchamp \
    FrameworksResOverlayDuchamp \
    PowerOffAlarmOverlayDuchamp \
+   NfcOverlayDuchamp \
    SettingsProviderOverlayDuchampPOCO \
    SettingsProviderOverlayDuchampRedmi \
    SettingsResOverlayDuchamp \
