@@ -1,8 +1,8 @@
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index d81ae85..4bd0c3e 100644
+index 1c82b5d..5a90ab2 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -51,6 +51,13 @@
+@@ -52,6 +52,13 @@
      <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:directBootAware="true" android:extractNativeLibs="false" android:label="ImsApp" android:name="com.mediatek.ims.ImsApp" android:persistent="true" android:usesNonSdkApi="true">
          <uses-library android:name="com.mediatek.ims.oemplugin" android:required="false"/>
          <uses-library android:name="com.mediatek.ims.plugin" android:required="false"/>
@@ -16,13 +16,6 @@ index d81ae85..4bd0c3e 100644
          <service android:exported="true" android:name="com.mediatek.ims.MtkDynamicImsService" android:permission="android.permission.BIND_IMS_SERVICE">
              <meta-data android:name="android.telephony.ims.RCS_FEATURE" android:value="true"/>
              <meta-data android:name="android.telephony.ims.MMTEL_FEATURE" android:value="true"/>
-@@ -82,4 +89,4 @@
-             </intent-filter>
-         </receiver>
-     </application>
--</manifest>
-\ No newline at end of file
-+</manifest>
 diff --git a/smali/com/mediatek/ims/ImsConfigManager.smali b/smali/com/mediatek/ims/ImsConfigManager.smali
 index d287579..99367fe 100644
 --- a/smali/com/mediatek/ims/ImsConfigManager.smali
@@ -135,19 +128,19 @@ index d4863a7..d3b7311 100644
      .line 859
      .end local v0    # "filter":Landroid/content/IntentFilter;
 diff --git a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
-index fe3c056..981c3a9 100644
+index 509ed5e..69e7cc1 100644
 --- a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
 +++ b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
-@@ -5307,7 +5307,7 @@
+@@ -5327,7 +5327,7 @@
  .end method
  
  .method private registerForBroadcast()V
 -    .locals 3
 +    .locals 4
  
-     .line 1481
+     .line 1507
      new-instance v0, Landroid/content/IntentFilter;
-@@ -5345,7 +5345,9 @@
+@@ -5365,7 +5365,9 @@
  
      iget-object v2, p0, Lcom/mediatek/wfo/impl/ImsLocationHandler;->mReceiver:Landroid/content/BroadcastReceiver;
  
@@ -156,7 +149,7 @@ index fe3c056..981c3a9 100644
 +
 +    invoke-virtual {v1, v2, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 1491
+     .line 1517
      return-void
 diff --git a/smali/com/mediatek/wfo/impl/MwiService.smali b/smali/com/mediatek/wfo/impl/MwiService.smali
 index 6d89329..394c9f4 100644
