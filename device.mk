@@ -271,7 +271,9 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/rsc,$(TARGET_COPY_OUT_VENDOR)/etc/rsc)
 
 # Radio (IMS)
+ifneq ($(wildcard hardware/lineage/compat/frameworks/compat.mk),)
 $(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
+endif
 
 PRODUCT_BOOT_JARS += \
     xiaomi-telephony-stub
