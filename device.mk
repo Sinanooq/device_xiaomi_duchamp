@@ -80,8 +80,6 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
@@ -307,7 +305,11 @@ PRODUCT_PACKAGES += \
     init.mt6897.usb.rc \
     init.project.rc \
     init.sensor_2_0.rc \
-    ueventd.mtk.rc
+    init.wlan_drv.rc \
+    mtkpower_applist-mtk-default.rc \
+    ueventd.mtk.rc \
+    vendor.mediatek.hardware.mtkpower@1.0-init.rc \
+    wlan_assistant.rc
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/init.recovery.mt6897.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6897.rc
@@ -339,11 +341,8 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.pixel \
+    android.hardware.thermal-service.mediatek \
     thermal_symlinks
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # USB
 $(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_supported,true)
@@ -364,6 +363,11 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     wpa_supplicant
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+    $(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    $(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay

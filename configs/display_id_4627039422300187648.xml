@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 
 <displayConfiguration>
-    <!-- Global Brightness-Nit mapping -->
+    <!-- Global Brightness-Nit mapping (cihazdan alındı: 2nit=0.000854597, 500nit=0.499938, 1200nit=1.0) -->
     <screenBrightnessMap>
         <point>
             <value>0.000854597</value>
@@ -16,30 +16,53 @@
             <nits>1200.0</nits>
         </point>
     </screenBrightnessMap>
-    <!-- root node for HBM-->
+
+    <!-- HBM: minLux=5882, transition=0.499938 (500nit), no time limit, allow in low power -->
     <highBrightnessMode enabled="true">
-        <!-- Transition point brightness from normal to HBM mode -->
         <transitionPoint>0.499938</transitionPoint>
-        <!-- Minimum lux to enter HBM -->
         <minimumLux>5882</minimumLux>
-        <!-- Time limitation for HBM-->
         <timing>
             <timeWindowSecs>0</timeWindowSecs>
             <timeMaxSecs>0</timeMaxSecs>
             <timeMinSecs>0</timeMinSecs>
         </timing>
-        <!--Refresh rate limitation when the device is in HBM -->
-        <!-- <refreshRate>
-            <minimum>0</minimum>
-            <maximum>0</maximum>
-        </refreshRate> -->
-        <!-- Thermal limitation for HBM -->
         <thermalStatusLimit>critical</thermalStatusLimit>
-        <!-- Low power mode limitation for HBM -->
         <allowInLowPowerMode>true</allowInLowPowerMode>
     </highBrightnessMode>
+
+    <!-- Brightness ramp rates (cihazdan alındı) -->
     <screenBrightnessRampFastDecrease>0.41587824</screenBrightnessRampFastDecrease>
     <screenBrightnessRampFastIncrease>0.23228346</screenBrightnessRampFastIncrease>
     <ambientLightHorizonLong>3000</ambientLightHorizonLong>
     <ambientLightHorizonShort>1000</ambientLightHorizonShort>
+
+    <!--
+        Adaptive Refresh Rate (ARR) / Variable Refresh Rate config.
+        Panel supports: 30Hz, 60Hz, 90Hz, 120Hz (defaultModeId=3 = 120Hz from dumpsys).
+        defaultRefreshRate=121 and defaultPeakRefreshRate=121 match mRefreshRateData from dumpsys.
+        This enables AOSP auto refresh rate switching (Settings > Display > Smooth Display).
+        hasArrSupport=true: enables the ARR flag so AOSP framework uses adaptive switching.
+    -->
+    <refreshRateConfigs>
+        <defaultRefreshRate>120</defaultRefreshRate>
+        <defaultPeakRefreshRate>120</defaultPeakRefreshRate>
+        <defaultRefreshRateInHbmHdr>60</defaultRefreshRateInHbmHdr>
+        <defaultRefreshRateInHbmSunlight>60</defaultRefreshRateInHbmSunlight>
+    </refreshRateConfigs>
+
+    <!-- Enable ARR support — sets mHasArrSupport=true in DisplayDeviceInfo.
+         Without this, AOSP keeps renderFrameRate locked at 60Hz even with 120Hz panel. -->
+    <hasArrSupport>true</hasArrSupport>
+
+    <!--
+        Supported color modes (from dumpsys: [0, 7, 9]):
+          0 = COLOR_MODE_NATIVE
+          7 = COLOR_MODE_DISPLAY_P3
+          9 = COLOR_MODE_SRGB
+        defaultColorMode=0 (NATIVE) matches persist.sys.sf.native_mode=257 (standard).
+    -->
+    <defaultColorMode>0</defaultColorMode>
+
+    <!-- HDR capabilities (from dumpsys: types=[1,2,3,4] = DOLBY_VISION, HDR10, HLG, HDR10_PLUS) -->
+    <!-- maxLuminance=500nit (normal), peak=1200nit (HBM) -->
 </displayConfiguration>
