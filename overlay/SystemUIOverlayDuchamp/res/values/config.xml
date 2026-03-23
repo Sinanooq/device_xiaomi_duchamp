@@ -41,10 +41,38 @@
      vibrator is capable of subtle vibrations -->
     <bool name="config_vibrateOnIconAnimation">true</bool>
 
-    <!-- Preferred refresh rate at keyguard, if supported by the display. Overrides
-         keyguardMaxRefreshRate. -->
-    <integer name="config_keyguardRefreshRate">60</integer>
+    <!-- Preferred refresh rate at keyguard, if supported by the display.
+         120Hz keeps touch sampling high enough for UDFPS to work in AOD/screen-off state. -->
+    <integer name="config_keyguardRefreshRate">120</integer>
 
     <!-- Preferred max refresh rate at keyguard, if supported by the display. -->
-    <integer name="config_keyguardMaxRefreshRate">60</integer>
+    <integer name="config_keyguardMaxRefreshRate">120</integer>
+
+    <!-- AOD: disable clock on always-on display, show only UDFPS animation -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <!-- Always-on kapalı: ekran 10sn sonra tamamen söner, sensörle pulse açılır -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- Hide clock/date/notifications on AOD — only UDFPS affordance shown -->
+    <bool name="config_doze_show_clock">false</bool>
+    <bool name="config_doze_show_date">false</bool>
+    <bool name="config_doze_show_notifications">false</bool>
+    <bool name="config_doze_show_charging_animation">false</bool>
+
+    <!-- Show UDFPS affordance (fingerprint icon/animation) on AOD -->
+    <bool name="config_show_udfps_affordance_on_aod">true</bool>
+
+    <!-- Doze pulse: ekran kapandıktan sonra kaç ms AOD gösterilsin (10 saniye) -->
+    <integer name="doze_pulse_duration_in">900</integer>
+    <integer name="doze_pulse_duration_visible">10000</integer>
+    <integer name="doze_pulse_duration_out">900</integer>
+
+    <!-- Pulse tetikleyiciler: pickup, tap, tilt sensörleri -->
+    <bool name="doze_pulse_on_pick_up">true</bool>
+    <bool name="doze_pulse_on_double_tap">true</bool>
+    <bool name="doze_pulse_on_long_press">false</bool>
+
+    <!-- Pulse sonrası ekran tamamen kapansın (STATE_DOZE_SUSPEND) -->
+    <bool name="doze_display_state_supported">true</bool>
+    <bool name="doze_suspend_display_state_supported">true</bool>
 </resources>

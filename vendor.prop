@@ -8,9 +8,12 @@ persist.vendor.audio.power.save.setting=253
 persist.vendor.audio.usb.offload=false
 ro.audio.monitorRotation=true
 ro.audio.spatializer_enabled=true
+# Medya ses adımı: 25 (default 15) — daha hassas kontrol
+ro.config.media_vol_steps=25
 ro.config.media_vol_default=10
-ro.config.vc_call_vol_default=4
-ro.config.vc_call_vol_steps=11
+# Telefon ses adımı: 15 (default 11) — daha geniş aralık
+ro.config.vc_call_vol_steps=15
+ro.config.vc_call_vol_default=6
 ro.vendor.audio.gain.support=true
 vendor.audio.gamevoice=1
 vendor.audio.powerhal.power.dl=true
@@ -93,7 +96,10 @@ dalvik.vm.dex2oat64.enabled=true
 # Display
 debug.graphics.game_default_frame_rate.disabled=true
 debug.mediatek.appgamepq_compress=1
-persist.sys.sf.native_mode=257
+# native_mode=257 Xiaomi PQ HAL vivid modunu zorlar ve Android renk modlarını (NATIVE/P3/sRGB) bypass eder.
+# LineageOS renk modu seçicisinin çalışması için 0 (NATIVE) olmalı.
+# Kullanıcı Settings > Display > Colors'dan renk modunu değiştirebilir.
+persist.sys.sf.native_mode=0
 persist.vendor.sys.pq.disp.gamma.silky.brightness=1
 persist.vendor.sys.pq.disp_gamma_silky_brightness_by_hwc=1
 persist.vendor.sys.pq.mtk_disp_clarity_support=0
@@ -107,7 +113,8 @@ ro.vendor.mml.mtk_mml_support=1
 ro.vendor.mtk.gpud.mm.fbc.disable=false
 ro.vendor.mtk_aal_support=1
 ro.vendor.mtk_aod_support=1
-ro.vendor.display.aod_monitor_default_fps=30
+# AOD monitor FPS: 30 çok düşük, UDFPS touch event'lerini kaçırıyor — 60'a çıkarıldı
+ro.vendor.display.aod_monitor_default_fps=60
 ro.vendor.mtk_backlight_hwc_support=1
 ro.vendor.mtk_blulight_def_support=1
 ro.vendor.mtk_cuva_hdr_support=1
@@ -115,7 +122,10 @@ ro.vendor.mtk_dre30_support=1
 ro.vendor.mtk_hdr10p_adaptive_support=1
 ro.vendor.mtk_hdr_video_support=1
 ro.vendor.mtk_ovl_bringup=0
-ro.vendor.mtk_pq_color_mode=3
+# mtk_pq_color_mode=3: Xiaomi ColorService kendi ppMode=257 (vivid) mapping'ini kullanır
+# ve Android renk modlarını (0=Natural, 7=P3, 9=sRGB) override eder.
+# 0 = Android ColorDisplayManager'ın kontrolüne bırak
+ro.vendor.mtk_pq_color_mode=0
 ro.vendor.mtk_pq_support=2
 ro.vendor.mtk_svp_on_mtee_support=1
 ro.vendor.pq.mtk_aal_support=1
@@ -218,6 +228,7 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 # Fingerprint (vendor/build.prop'tan alındı)
 persist.vendor.sys.fp.expolevel=0x88
 persist.vendor.fingerprint.type=udfps_optical
+persist.vendor.fingerprint.sensor_location=610|2442|114
 persist.vendor.sys.fp.fod.location.X_Y=504,2332
 persist.vendor.sys.fp.fod.size.width_height=210,210
 persist.vendor.sys.fp.fp_anti_mistouch=true
@@ -360,6 +371,9 @@ ro.vendor.sensors.xiaomi.udfps=true
 # xiaomi.sensor.fod is the actual sensor type on this device (type: 33171030)
 persist.vendor.sys.fp.fod.dimlayer.hbm=1
 persist.vendor.sys.fp.fod.dimlayer.fp=1
+# Screen-off UDFPS: FOD sensor wakeup ve HBM AOD'da aktif olsun
+persist.vendor.sys.fp.fod.aod.enable=1
+persist.vendor.sys.fp.fod.screen_off.enable=1
 
 # SurfaceFlinger
 # Phase offsets (cihazdan alındı: debug.sf.* değerleri)
@@ -385,7 +399,7 @@ debug.sf.treat_170m_as_sRGB=1
 debug.sf.use_phase_offsets_as_durations=1
 debug.sf.disable_backpressure=1
 debug.sf.set_binder_thread_rt=1
-ro.surface_flinger.enable_frame_rate_override=false
+ro.surface_flinger.enable_frame_rate_override=true
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.game_default_frame_rate_override=0
 ro.surface_flinger.has_HDR_display=true
@@ -426,3 +440,13 @@ ro.zram.periodic_wb_delay_hours=24
 
 # Zygote
 zygote.critical_window.minute=10
+
+# CPU schedutil governor tuning
+vendor.schedutil.rate_limit_us=500
+sys.use_fifo_ui=0
+pm.sleep_mode=1
+
+# Charger — kapalıyken şarj modunda kal, boot etme
+ro.enable_boot_charger_mode=1
+# Charger suspend'i kapat: güç tuşuna her basışta ekran açılsın ve animasyon gösterilsin
+ro.charger.enable_suspend=false

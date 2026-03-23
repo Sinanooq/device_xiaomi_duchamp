@@ -11,7 +11,9 @@ ro.vendor.mtk.pq.odm=true
 ro.vendor.sre.enable=false
 ro.vendor.xiaomi.bl.poll=true
 sys.displayfeature_hidl=false
-vendor.displayfeature.entry.enable=true
+# DisplayFeatureHal entry: false = Xiaomi'nin kendi renk servisi devre dışı,
+# Android ColorDisplayManager renk modlarını (Natural/P3/sRGB) yönetir
+vendor.displayfeature.entry.enable=false
 
 # SKU
 ro.product.property_source_order=odm,vendor,product,system_ext,system

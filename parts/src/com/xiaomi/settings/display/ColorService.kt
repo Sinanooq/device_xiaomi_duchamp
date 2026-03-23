@@ -165,7 +165,18 @@ class ColorService : Service() {
             private const val EXPERT_VALUE = 0
             private const val EXPERT_COOKIE = 10
 
-            fun fromId(id: Int): ColorMode? = values().find { it.id == id }
+            // Android ColorDisplayManager mode ID'lerini Xiaomi mode ID'lerine map et:
+            // 0 = COLOR_MODE_NATURAL (NATIVE)  → STANDARD (257)
+            // 7 = COLOR_MODE_DISPLAY_P3        → P3 (268)
+            // 9 = COLOR_MODE_SRGB              → SRGB (267)
+            private val androidToXiaomiMap = mapOf(
+                0 to STANDARD,
+                7 to P3,
+                9 to SRGB,
+            )
+
+            fun fromId(id: Int): ColorMode? =
+                androidToXiaomiMap[id] ?: values().find { it.id == id }
         }
     }
 }
