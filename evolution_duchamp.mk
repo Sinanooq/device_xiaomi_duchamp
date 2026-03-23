@@ -25,8 +25,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Evolution X specific
-EVO_BUILD_TYPE := UNOFFICIAL
-TARGET_BOOT_ANIMATION_RES := 1080
+EVO_BUILD_TYPE := Unofficial
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=Redmi/duchamp/duchamp:16/BP2A.250605.031.A3/OS3.0.3.0.WNLCNXM:user/release-keys \
