@@ -271,3 +271,23 @@ Added `media.stagefright.thumbnail.prefer_hw_codecs=true` — hardware codec pre
 `vendor_thermal_prop` tipi vendor blob sepolicy'de zaten tanımlıydı, bizim `property.te`'deki duplicate tanım derleme hatasına neden oluyordu. Kaldırıldı.
 
 `vendor_thermal_prop` type was already declared in the vendor blob sepolicy. The duplicate declaration in our `property.te` was causing a build error. Removed.
+
+---
+
+### WiFi Eski Modem Uyumluluğu / WiFi Legacy Router Compatibility
+
+`pmf=1`'den `pmf=0`'a düşürüldü. PMF (Protected Management Frames) desteklemeyen eski router'larda bağlantı el sıkışması başarısız oluyordu.
+
+`pmf` changed from 1 to 0. Routers that don't support PMF (Protected Management Frames) were failing the connection handshake.
+
+`sae_pwe=2`'den `sae_pwe=0`'a düşürüldü. Önceki ayar yalnızca H2E (Hash-to-Element) yöntemini kabul ediyordu; hunting-and-pecking kullanan eski WPA3 router'lar bağlanamıyordu. Artık her iki yöntem de kabul ediliyor.
+
+`sae_pwe` changed from 2 to 0. The previous setting only accepted H2E (Hash-to-Element); older WPA3 routers using hunting-and-pecking couldn't connect. Both methods are now accepted.
+
+`wpa_allow_tkip_in_gt=1` eklendi. TKIP group cipher kullanan eski WPA/WPA2 ağlarına bağlanabilmek için gerekli.
+
+Added `wpa_allow_tkip_in_gt=1`. Required to connect to legacy WPA/WPA2 networks using TKIP as the group cipher.
+
+`bss_expiration_age=180` eklendi. Eski router'ların beacon aralığı uzun olabiliyor, BSS expiration süresi buna göre artırıldı.
+
+Added `bss_expiration_age=180`. Legacy routers can have longer beacon intervals — BSS expiration time increased accordingly.
