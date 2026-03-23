@@ -178,8 +178,8 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
    CarrierConfigOverlayDuchamp \
    FrameworksResOverlayDuchamp \
-   MtkImsOverlayDuchamp \
-   MtkImsTelephonyOverlayDuchamp \
+   mtk-ims \
+   mtk-ims-telephony \
    PowerOffAlarmOverlayDuchamp \
    NetworkStackOverlayDuchamp \
    NfcOverlayDuchamp \
@@ -353,8 +353,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Charger
 PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
+    charger_res_images
 
 # Thermal
 PRODUCT_PACKAGES += \
