@@ -16,8 +16,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # IMS
+# ImsService vendor blob'da tanımlı — duplicate kaldırıldı
 PRODUCT_PACKAGES += \
-    ImsService \
     mtk-ims \
     mtk-ims-telephony
 
