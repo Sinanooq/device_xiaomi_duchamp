@@ -10,16 +10,8 @@ soong_namespace {
     ],
 }
 
-android_app_import {
-    name: "ImsService",
-    owner: "mediatek",
-    apk: "proprietary/system/priv-app/ImsService/ImsService.apk",
-    certificate: "platform",
-    dex_preopt: {
-        enabled: false,
-    },
-    privileged: true,
-}
+// ImsService vendor blob'da (vendor/xiaomi/duchamp) zaten tanımlı
+// Burada tekrar tanımlamak MODULE.TARGET.APPS.ImsService duplicate hatasına neden oluyor
 
 install_symlink {
     name: "vendor_mdota_symlink",
