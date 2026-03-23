@@ -264,6 +264,7 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/rsc,$(TARGET_COPY_OUT_VENDOR)/etc/rsc)
 
 # Radio (IMS)
+# hardware/lineage/compat: LineageOS compat katmanı — EvolutionX'te de mevcut
 ifneq ($(wildcard hardware/lineage/compat/frameworks/compat.mk),)
 $(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
 endif
@@ -354,9 +355,7 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
-ifneq ($(wildcard vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk),)
-$(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
-endif
+# MT6897 cihazda vibrator vendor blob'da tanımlı — Qualcomm vibrator include'u kaldırıldı
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
