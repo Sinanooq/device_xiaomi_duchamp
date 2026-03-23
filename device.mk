@@ -17,9 +17,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # IMS
 # ImsService vendor blob'da tanımlı — duplicate kaldırıldı
-PRODUCT_PACKAGES += \
-    mtk-ims \
-    mtk-ims-telephony
 
 # A/B
 ifneq ($(WITH_GMS),true)
@@ -144,16 +141,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
-
-# Lineage Health
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
-$(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
-$(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
-$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
-
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
+    android.hardware.light-service.mediatek
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -189,11 +177,6 @@ PRODUCT_PACKAGES += \
    SystemUIOverlayDuchamp \
    TelephonyResOverlayDuchamp \
    WifiOverlay
-
-PRODUCT_PACKAGES += \
-   LineageApertureOverlayDuchamp \
-   LineageSDKOverlayDuchamp \
-   LineageSettingsOverlayDuchamp
 
 # Parts
 PRODUCT_PACKAGES += \
@@ -254,7 +237,7 @@ PRODUCT_COPY_FILES += \
 $(call soong_config_set,power_libperfmgr,mode_extension_lib, //$(DEVICE_PATH):libperfmgr-ext-xiaomi)
 
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
+    android.hardware.power-service.pixel-libperfmgr \
     libmtkperf_client_vendor \
     libperfctl_vendor \
     libpowerhalwrap_vendor
@@ -338,14 +321,13 @@ PRODUCT_COPY_FILES += \
    $(DEVICE_PATH)/configs/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Shipping API level
-PRODUCT_SHIPPING_API_LEVEL := 34
+PRODUCT_SHIPPING_API_LEVEL := 36
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
     hardware/mediatek/wlan/wifi_hal \
@@ -372,7 +354,9 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
+ifneq ($(wildcard vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk),)
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
+endif
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
