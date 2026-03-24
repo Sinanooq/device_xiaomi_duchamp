@@ -1,1 +1,3 @@
-user=system seinfo=platform isPrivApp=true name=com.xiaomi.settings domain=system_app type=system_app_data_file levelFrom=all
+# Vendor seapp_contexts
+# Note: system_app domain entries must not be placed here (coredomain restriction).
+# com.xiaomi.settings uses platform seinfo and is handled by system seapp_contexts.
