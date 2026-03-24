@@ -46,6 +46,10 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
+# Kernel build variables (prebuilt kernel için gerekli)
+TARGET_KERNEL_PLATFORM_TARGET := mt6897
+KERNEL_BUILD_OUT_PREFIX :=
+
 # Kernel
 BOARD_DTB_OFFSET := 0x07c88000
 BOARD_KERNEL_BASE := 0x3fff8000
