@@ -47,9 +47,15 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
-# Kernel build variables (prebuilt kernel için gerekli)
+# Kernel build variables (prebuilt kernel — Soong EXPORT_TO_SOONG için gerekli)
 KERNEL_BUILD_OUT_PREFIX :=
 TARGET_KERNEL_PLATFORM_TARGET :=
+KERNEL_ARCH := arm64
+KERNEL_CROSS_COMPILE :=
+KERNEL_MAKE_CMD :=
+KERNEL_MAKE_FLAGS :=
+TARGET_KERNEL_SOURCE :=
+TARGET_KERNEL_CONFIG :=
 
 # Kernel
 BOARD_DTB_OFFSET := 0x07c88000
