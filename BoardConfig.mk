@@ -161,6 +161,7 @@ VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 BOARD_SEPOLICY_VERS := 202404
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/lineage/sepolicy/common/public
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
