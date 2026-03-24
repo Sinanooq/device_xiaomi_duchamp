@@ -12,7 +12,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/duchamp/device.mk)
 
 # Inherit some common Evolution X stuff.
-$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
+# vendor/evolution path'i vendor/lineage olarak sync ediliyor (snippets/evolution.xml)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_NAME := evolution_duchamp
 PRODUCT_DEVICE := duchamp
