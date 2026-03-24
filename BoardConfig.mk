@@ -158,6 +158,9 @@ ENABLE_VENDOR_RIL_SERVICE := true
 BOOT_SECURITY_PATCH := 2025-11-01
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 
+# SELinux - permissive for debugging
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
 # SELinux
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
