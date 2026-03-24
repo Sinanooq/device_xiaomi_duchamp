@@ -328,11 +328,6 @@ PRODUCT_SHIPPING_API_LEVEL := 36
 # Vendor blobs were compiled with 4KB page alignment, bypass 16KB check
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := false
 
-# Kernel headers (prebuilt)
-# Soong lineage_generator için gerekli değişkenler
-KERNEL_BUILD_OUT_PREFIX :=
-TARGET_KERNEL_PLATFORM_TARGET :=
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \

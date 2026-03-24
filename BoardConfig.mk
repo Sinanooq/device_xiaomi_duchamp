@@ -48,8 +48,8 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Kernel build variables (prebuilt kernel için gerekli)
-# TARGET_KERNEL_PLATFORM_TARGET boş bırakılmalı — prebuilt_kernel_includes kullanılsın
 KERNEL_BUILD_OUT_PREFIX :=
+TARGET_KERNEL_PLATFORM_TARGET :=
 
 # Kernel
 BOARD_DTB_OFFSET := 0x07c88000
