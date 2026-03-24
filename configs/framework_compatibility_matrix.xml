@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Framework compatibility matrix for duchamp -->
+<compatibility-matrix version="7.0" type="framework">
+    <hal format="aidl" optional="true">
+        <name>android.hardware.vibrator</name>
+        <version>1-2</version>
+        <interface>
+            <name>IVibrator</name>
+            <instance>default</instance>
+            <instance>vibratorfeature</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>
