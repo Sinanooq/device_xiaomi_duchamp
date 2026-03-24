@@ -141,7 +141,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.default
+    android.hardware.light-service.lineage
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -323,6 +323,11 @@ PRODUCT_COPY_FILES += \
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 36
+
+# Kernel headers (prebuilt)
+# Soong lineage_generator için gerekli değişkenler
+KERNEL_BUILD_OUT_PREFIX :=
+TARGET_KERNEL_PLATFORM_TARGET :=
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
