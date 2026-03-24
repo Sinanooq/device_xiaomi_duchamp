@@ -69,31 +69,4 @@ IMS/VoLTE/VoNR:
 
 Şarj animasyonu:
 - init.mt6897.rc on charger: ro.charger.enable_suspend=false eklendi
-- init.mt6897.rc on charger: sys.charger.disable_init_blank=true eklendi
-- ro.charger.enable_suspend=false ve ro.enable_boot_charger_mode=1 eklendi
-
-Ağ ve izinler:
-- manifest.xml: android.hardware.gnss AIDL v3 eklendi
-- WiFi config dosyaları oluşturuldu
-- TelephonyResOverlayDuchamp overlay eklendi
-- 7 adet MediaTek permission XML eklendi
-- configs/rsc GL ve IN: default_network 33 -> 32
-- bluetooth.profile.sap.server.enabled=false eklendi
-- android.hardware.opengles.aep.xml eklendi
-- android.hardware.nfc.any.xml eklendi
-- android.hardware.telephony.data.xml ve android.hardware.location.xml eklendi
-- persist.sys.gps.lpp=3 eklendi
-
-Ses:
-- audio_policy_volumes.xml: speaker +6dB boost
-- default_volume_tables.xml oluşturuldu
-- audio_spatial_db_reduce.xml oluşturuldu
-- ro.config.media_vol_steps: 15 -> 25
-- ro.config.vc_call_vol_steps: 11 -> 15
-- persist.bluetooth.a2dp_offload.cap=sbc-aac-ldac-aptx-aptxhd
-
-Batarya:
-- config_screenBrightnessNits ve config_screenBrightnessBacklight array'leri eklendi
-- init.mt6897.rc: uid_io ve uid_time_in_state için chown/chmod eklendi
-- power_profile.xml eski format array'leri temizlendi
-- persist.vendor.battery.health=true ve health.optimise=true eklendi
+- init.mt6897.rc on charger: sys.charger.disable_init_blank=true eklend
