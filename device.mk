@@ -304,6 +304,7 @@ PRODUCT_PACKAGES += \
     init.wlan_drv.rc \
     mtkpower_applist-mtk-default.rc \
     ueventd.mtk.rc \
+    ueventd.mtk.rc.vendor_ramdisk \
     vendor.mediatek.hardware.mtkpower@1.0-init.rc \
     wlan_assistant.rc
 

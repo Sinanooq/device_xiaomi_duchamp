@@ -12,6 +12,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.mt6897.vendor_ramdisk",
+    src: "etc/fstab.mt6897",
+    filename: "fstab.mt6897",
+    vendor_ramdisk: true,
+}
+
+prebuilt_etc {
     name: "init.batterysecret.rc",
     src: "etc/init.batterysecret.rc",
     sub_dir: "init/hw",
@@ -79,6 +86,14 @@ prebuilt_etc {
     src: "etc/ueventd.mtk.rc",
     filename: "ueventd.rc",
     vendor: true,
+    vendor_ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.mtk.rc.vendor_ramdisk",
+    src: "etc/ueventd.mtk.rc",
+    filename: "ueventd.rc",
+    vendor_ramdisk: true,
 }
 
 prebuilt_etc {

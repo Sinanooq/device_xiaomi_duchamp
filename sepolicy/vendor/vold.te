@@ -1,0 +1,10 @@
+# vold: MTK-specific ek izinler
+# Hata: "vold: unable to create uevent socket: permission denied"
+# Hata: "VolumeManager: Unable to start NetlinkManager"
+#
+# Not: androidboot.selinux=permissive ile boot ettikten sonra
+# dmesg/logcat'ten gerçek avc denied logları alınarak bu dosya güncellenecek.
+# Şimdilik MTK cihazlarda eksik olduğu bilinen izinler ekleniyor.
+
+# vold'un sysfs_zram_uevent'e yazmasına izin ver
+allow vold sysfs_zram_uevent:file w_file_perms;
