@@ -73,6 +73,5 @@
     <bool name="doze_pulse_on_long_press">false</bool>
 
     <!-- Pulse sonrası ekran tamamen kapansın (STATE_DOZE_SUSPEND) -->
-    <bool name="doze_display_state_supported">true</bool>
     <bool name="doze_suspend_display_state_supported">true</bool>
 </resources>
